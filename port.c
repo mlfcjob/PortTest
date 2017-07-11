@@ -9,6 +9,7 @@
 
 
 #define MAXLINE 80
+#define DEBUG 1
 
 
 int port_isfree (int port)  
@@ -44,11 +45,13 @@ int main(void)
 
 	for( i = 0; i < 65535; i++) {
 		int ret = port_isfree(i);
+#ifdef DEBUG
 		if(ret == 1){
 			//printf("端口 %d可用\n",i);
 		} else {
 			printf("端口 %d被占用\n",i);
 		}
+#endif
 	}
 	close(sockfd);
 	return 0;
